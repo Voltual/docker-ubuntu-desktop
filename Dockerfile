@@ -13,9 +13,8 @@ RUN apt update -y && apt install -y \
     tzdata \
     && rm -rf /var/lib/apt/lists/*
 
-# 创建 Luanti (Minetest) 数据目录并设置权限
+# 创建 Luanti (Minetest) 数据目录
 RUN mkdir -p /var/lib/minetest/.minetest/worlds
-RUN chown -R minetest:minetest /var/lib/minetest
 
 # 开放端口：30000 (Luanti)（已移除 22 端口）
 EXPOSE 30000/udp
