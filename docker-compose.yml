@@ -1,0 +1,15 @@
+services:
+  luanti_server:
+    build: .
+    container_name: luanti_headless_ssh
+    restart: unless-stopped
+    ports:
+      - "30000:30000/udp"  # 游戏端口
+      - "2222:22"          # 将容器的 22 端口映射到宿主机的 2222，避免冲突
+    volumes:
+      # 挂载配置、数据、游戏包和插件目录到宿主机的当前文件夹
+      - ./config:/etc/minetest
+      - ./data:/var/lib/minetest
+      - ./games:/var/lib/minetest/.minetest/games
+      - ./mods:/var/lib/minetest/.minetest/mods
+    command: --gameid minetest --worldname world1
