@@ -23,9 +23,8 @@ RUN echo 'root:root123' | chpasswd
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config
 
-# 创建 Luanti (Minetest) 数据目录并设置权限
+# 创建 Luanti (Minetest) 数据目录
 RUN mkdir -p /var/lib/minetest/.minetest/worlds
-RUN chown -R minetest:minetest /var/lib/minetest
 
 # 开放端口：30000 (Luanti), 22 (SSH)
 EXPOSE 30000/udp
