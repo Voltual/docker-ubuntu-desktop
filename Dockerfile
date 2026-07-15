@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # 更新并安装必要组件：Luanti服务器、SSH服务、sudo、以及基础工具
 RUN apt update -y && apt install -y \
-    luanti-server \
+    minetest-server \
     openssh-server \
     sudo \
     curl \
@@ -35,7 +35,7 @@ RUN echo '#!/bin/bash\n\
 service ssh start\n\
 echo "SSH 服务已启动..."\n\
 echo "正在启动 Luanti 服务器..."\n\
-/usr/bin/luantiserver --config /etc/minetest/minetest.conf "$@"' > /start.sh
+/usr/bin/minetestserver --config /etc/minetest/minetest.conf "$@"' > /start.sh
 
 RUN chmod +x /start.sh
 
