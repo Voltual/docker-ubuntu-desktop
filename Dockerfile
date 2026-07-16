@@ -10,8 +10,8 @@ RUN apt update -y && apt install -y \
     git \
     tzdata \
     socat \
-    net-tools \     # 新增
-    lsof \          # 新增
+    net-tools \
+    lsof \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /var/lib/minetest/.minetest/worlds/world
