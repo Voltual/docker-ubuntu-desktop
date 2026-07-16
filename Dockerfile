@@ -23,7 +23,7 @@ COPY <<'EOF' /start.sh
 #!/bin/bash
 echo "启动 Luanti 服务器 + socat 转发..."
 
-socat TCP-LISTEN:6080,reuseaddr,fork UDP:127.0.0.1:30000 &
+socat TCP-LISTEN:6080,reuseaddr,fork,keepalive,sndbuf=65536,rcvbuf=65536 UDP:127.0.0.1:30000 &
 
 exec /usr/games/minetestserver \
     --config /etc/minetest/minetest.conf \
